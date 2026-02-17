@@ -1,0 +1,46 @@
+# TriplEEE Security Auditor — Python Dependencies
+# Tested on Python 3.9–3.13, macOS (x86_64 + arm64), Linux
+#
+# Install:  pip install -r requirements.txt
+#
+# sentence-transformers is intentionally EXCLUDED — it requires torch, which
+# has no pre-built wheel for Python 3.13 on macOS x86_64.
+# We use ChromaDB's built-in ONNX embedding (all-MiniLM-L6-v2) instead.
+# Set EMBEDDING_BACKEND env var to switch backends (default: "onnx").
+
+# Core LLM & Orchestration
+anthropic>=0.40.0
+langchain-anthropic>=0.3.0
+langchain-core>=0.3.0
+langgraph>=0.2.0
+
+# Vector DB & ONNX Embeddings (no torch needed)
+chromadb>=0.5.0
+onnxruntime>=1.14.1
+
+# Data Validation
+pydantic>=2.6.0
+
+# Environment
+python-dotenv>=1.0.0
+
+# Utilities
+orjson>=3.9.0
+
+# Dev / Testing
+pytest>=8.0.0
+pytest-asyncio>=0.23.0
+rich>=13.0.0
+
+# --- Optional Embedding Backends ---
+# Uncomment to use a different backend (set EMBEDDING_BACKEND env var too):
+#
+# OpenAI  (EMBEDDING_BACKEND=openai, needs OPENAI_API_KEY):
+# openai>=1.0.0
+#
+# Cohere  (EMBEDDING_BACKEND=cohere, needs COHERE_API_KEY):
+# cohere>=4.0.0
+#
+# SentenceTransformers  (EMBEDDING_BACKEND=sentence_transformers, needs torch):
+# Install torch first via conda:  conda install pytorch::pytorch -c pytorch
+# sentence-transformers>=3.0.0
