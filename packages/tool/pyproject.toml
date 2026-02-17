@@ -4,7 +4,18 @@ version = "0.1.0"
 description = ""
 readme = "src/tool/README.md"
 requires-python = ">=3.12"
-dependencies = []
+dependencies = [
+    "db-connector",
+    "llm-connector",
+    "tree-builder",
+    "tree-filler",
+    "utils",
+    "argparse"
+
+]
+
+[project.scripts]
+run-tool-cli =  "tool.cli:start_cli"
 
 
 

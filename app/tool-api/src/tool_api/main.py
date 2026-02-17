@@ -3,7 +3,9 @@ from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
 from tool_api.config import settings
-from tool_api.routers import health, nodes
+from tool_api.routers import health, nodes , tool
+
+
 
 app = FastAPI(
     title="TOOL API",
@@ -23,6 +25,7 @@ app.add_middleware(
 # ── Routers ───────────────────────────────────────────────────────────────────
 app.include_router(health.router)
 app.include_router(nodes.router, prefix="/api/v1")
+app.include_router(tool.router, prefix="/api/v1")
 
 
 @app.get("/", tags=["root"])
