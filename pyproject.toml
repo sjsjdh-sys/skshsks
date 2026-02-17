@@ -1,0 +1,45 @@
+[project]
+name = "TOOLAPP"
+version = "0.1.0"
+description = ""
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    "tree-builder",
+    "db-connector",
+    "llm-connector",
+    "tree-filler",
+    "tool-api",
+    "tool",
+    "utils",
+    "pydantic>=2.12.5",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=8.0",
+]
+
+
+[tool.uv.workspace]
+members = ["packages/*" , "app/tool-api"]
+
+[tool.pytest.ini_options]
+testpaths = ["packages" , "app"]
+addopts = "-v --tb=short"
+markers = [
+    "slow: marks tests as slow",
+    "integration: requires external services",
+]
+
+
+
+[tool.uv.sources]
+tool-api = {workspace = true}
+utils = {workspace = true}
+tool = {workspace = true}
+tree-builder = { workspace = true }
+tree-filler = { workspace = true }
+llm-connector = { workspace = true }
+db-connector = { workspace = true }
+
